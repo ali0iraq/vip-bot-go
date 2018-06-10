@@ -72,9 +72,7 @@ if(!men) { // اذا لم يكن هناك منشن
 
 });
 
-
-
-bot.login ('MzQ3NDk4NzMwNzcxMDU0NTky.Deh4xw.aY44b3XiOQB-rGOP-BWYGmnrSKo')
+bot.login ('tow-1')
 
 let points = JSON.parse(fs.readFileSync("./points.json", "utf8"));
 const prefix = "-^";
@@ -246,7 +244,7 @@ client.on('message', message => {
                                    }
                                    }); 
 
-var kboosh = new Eris("NDQ5MjMxNDM1OTc1NjIyNjY2.Dehr0w.QklhMHcvsGrmDqwHjarW9OyQPM0");
+var kboosh = new Eris("token-2");
 var kboosh_id = "353991756519309333";
                     var i = "0";
                     var x = "0";
@@ -283,7 +281,7 @@ kboosh.on("messageCreate", (msg) => {
     }
 });
 
-kboosh.connect("NDQ5MjMxNDM1OTc1NjIyNjY2.Dehr0w.QklhMHcvsGrmDqwHjarW9OyQPM0")
+kboosh.connect("token-3")
 
 
 
@@ -332,7 +330,17 @@ client.on('message', message => {
            }
 });
   
+const figlet = require('figlet');
+client.on('message', message => {
+if (message.content.startsWith(prefix + 'tag')) {
+    let args = message.content.split(" ").slice(1);
+if(!args[0]) return message.reply('مرجو كتابة نص الدي تريد');  
 
+    figlet(args.join(" "), (err, data) => {
+              message.channel.send("```" + data + "```") //  عدل على النقاط وحطهم 3 من الجهتين مثل`` كذا تزيد واحد
+           })
+}
+});
 
 client.on('message', msg => {
 if (msg.content.includes('ازرو')) {
@@ -413,16 +421,33 @@ client.on('message', message => {
   });
 
 
-client.on('message', message => {
-    if (message.content.startsWith("-^stats")) {
-    message.channel.send({
-        embed: new Discord.RichEmbed()
-            .addField('Uptime⏲', timeCon(process.uptime()), true)
-            .addField('RAM Usage💽', `${(process.memoryUsage().rss / 1048576).toFixed()}MB`, true)
-            .addField('Guild Count🗂', client.guilds.size, true)
-    })
-}
-});
+const ow = ['211969554061066243' , '' , '' , ''];
+const admin = "^";
+bot.on('message', message => {
+    var argresult = message.content.split(` `).slice(1).join(' ');
+      if (!ow.includes(message.author.id)) return;
+      
+  if (message.content.startsWith(admin + 'ply')) {
+    bot.user.setGame(argresult);
+      message.channel.sendMessage(`**:white_check_mark:   ${argresult}**`)
+  } else 
+  if (message.content.startsWith(admin + 'wt')) {
+  bot.user.setActivity(argresult, {type:'WATCHING'});
+      message.channel.sendMessage(`**:white_check_mark:   ${argresult}**`)
+  } else 
+  if (message.content.startsWith(admin + 'ls')) {
+  bot.setActivity(argresult , {type:'LISTENING'});
+      message.channel.sendMessage(`**:white_check_mark:   ${argresult}**`)
+  } else 
+  if (message.content.startsWith(admin + 'st')) {
+      bot.message.channel.sendMessage(`**:white_check_mark:   ${argresult}**`)
+  }
+  });
+
+bot.login ('tow-2')
+
+
+
 
 const yt_api_key = "AIzaSyDeoIH0u1e72AtfpwSKKOSy3IPp2UHzqi4";
 
@@ -816,6 +841,8 @@ function play(guild, song) {
 	serverQueue.textChannel.send(`بدء تشغيل: **${song.title}**`);
 }
 
-client.login('NDQ5MjMxNDM1OTc1NjIyNjY2.Dehr0w.QklhMHcvsGrmDqwHjarW9OyQPM0');
+client.login('token-1');
+
+
   
 //.then(m => m.delete(10000)); 
